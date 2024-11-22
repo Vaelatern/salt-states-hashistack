@@ -1,0 +1,3 @@
+nomad:
+  docker:
+    privileged: True

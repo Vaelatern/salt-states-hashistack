@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<table>
+			<tr>
+				<th>Service Path</th>
+			</tr>
+			{{ range services -}}
+			{{ range service .Name -}}
+			{{ if index .ServiceMeta "apache_enable" -}}
+			{{ $path := index .ServiceMeta "apache_path" }}
+			<tr>
+				<td><a href="{{ $path }}">{{ $path }}</a></td>
+			</tr>
+			{{ end }}{{ end }}{{ end }}
+		</table>
+	</body>
+</html>

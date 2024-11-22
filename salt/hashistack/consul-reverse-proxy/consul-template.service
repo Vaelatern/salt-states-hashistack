@@ -1,0 +1,13 @@
+[Unit]
+Description=Template a file with consul live data
+After=network.target
+
+[Service]
+Type=simple
+# needs ownership of the files involved
+User=root
+Group=root
+ExecStart=/usr/bin/consul-template -template="/etc/apache2/sites-available/reverse-proxy.conf.ctmpl:/etc/apache2/sites-available/reverse-proxy.conf:systemctl reload apache2" -template="/var/www/html/consulServiceList.html.ctmpl:/var/www/html/index.html"
+
+[Install]
+WantedBy=multi-user.target
